@@ -13,3 +13,17 @@ export const selectedProducts = (products) => {
 		payload: products
 	};
 };
+
+export const addProduct = (products) => {
+	return {
+		type: ActionTypes.ADD_PRODUCT,
+		payload: products
+	};
+};
+
+export const cardCounter = (products) => {
+	return {
+		type: ActionTypes.CARD_COUNTER,
+		payload: products
+	};
+};

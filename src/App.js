@@ -10,8 +10,8 @@ const App = () => {
 			<Router>
 				<Header />
 				<Switch>
-					<Route path="/" exact component={ProductList} />
-					<Route path="/productDetails" exact component={ProductDetails} />
+					<Route path="/productList" exact component={ProductList} />
+					<Route path="/productList/:id" exact component={ProductDetails} />
 					<Route>404 not Found</Route>
 				</Switch>
 			</Router>
