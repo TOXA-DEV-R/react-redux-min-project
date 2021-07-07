@@ -5,9 +5,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectedProducts } from '../redux/actions/productActions';
+import { cardCounter } from '../redux/actions/productActions';
 
 const ProductDetails = () => {
 	const [ loading, setLoading ] = useState(true);
+	const products = useSelector((state) => state.allProducts.products);
 	const { category, description, image, price, title } = useSelector((state) => state.product);
 	const { id } = useParams();
 	const dispatch = useDispatch();
@@ -18,6 +20,10 @@ const ProductDetails = () => {
 		});
 		dispatch(selectedProducts(response.data));
 		setLoading(!loading);
+	};
+
+	const addCounter = (id) => {
+		dispatch(cardCounter(products.find((item) => item.id === id)));
 	};
 
 	useEffect(() => {
@@ -44,7 +50,9 @@ const ProductDetails = () => {
 								<p>{category}</p>
 							</div>
 							<p className="new-card__description">{description}</p>
-							<button className="new-card__btn">Add to Card</button>
+							<button className="new-card__btn" onClick={() => addCounter(id)}>
+								Add to Card
+							</button>
 						</div>
 					</div>
 				</div>

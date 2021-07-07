@@ -3,6 +3,9 @@ import { ActionTypes } from '../contants/action-types';
 const initialState = {
 	products: []
 };
+const cardCounter = {
+	products: []
+};
 
 export const producReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
@@ -31,7 +34,7 @@ export const selectedAddProduct = (state = initialState, { type, payload }) => {
 	}
 };
 
-export const productCardCounter = (state = initialState, { type, payload }) => {
+export const productCardCounter = (state = cardCounter, { type, payload }) => {
 	switch (type) {
 		case ActionTypes.CARD_COUNTER:
 			return { ...state, products: [ ...state.products, payload ] };
